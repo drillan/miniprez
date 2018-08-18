@@ -118,7 +118,7 @@ def test_registered_custom_tags():
     # Test all tags that are registered
     line = '@{}(foobar) .red big dog'
 
-    for name, func in _registered_custom_tags.items():
+    for name, func in list(_registered_custom_tags.items()):
         tagline(line.format(name))
 
 

@@ -3,8 +3,8 @@ import bs4
 import pyparsing as pyp
 from pyparsing import Word, Group, QuotedString, Combine
 from pyparsing import ZeroOrMore, OneOrMore, Optional, Literal
-from custom_tags import _registered_custom_tags
-from inline_markdown import inline_markdown_parser
+from .custom_tags import _registered_custom_tags
+from .inline_markdown import inline_markdown_parser
 
 _soup = bs4.BeautifulSoup("", "html.parser")
 
@@ -164,7 +164,7 @@ class tagline(object):
             if item["classes"]:
                 tag['class'] = tag.get('class', []) + item["classes"]
 
-            for key, val in item["options"].items():
+            for key, val in list(item["options"].items()):
                 if key and key[0] == '_':
                     continue
 
@@ -185,7 +185,7 @@ class tagline(object):
                 blocks.append(tag)
 
         # Only insert items into the outermost tag
-        for key, val in kwargs.items():
+        for key, val in list(kwargs.items()):
             blocks[0][key] = val
 
         # Nest the blocks
@@ -232,5 +232,5 @@ if __name__ == "__main__":
     # print(tagline('@h2 @line').build())
     # T1 = tagline('@background(foobar)')
     # T = tagline('@background(src="www") .blue @h2 dogs')
-    #print tagline('@figure(src="www" width=700) ')
-    print tagline('@img(src="www" width=700) ')
+    # print tagline('@figure(src="www" width=700) ')
+    print(tagline('@img(src="www" width=700) '))

@@ -85,7 +85,7 @@ class Inline_Markdown_Paser(object):
 
     def __call__(self, text):
         tags = self.grammar.parseString(text)
-        return ' '.join(map(unicode, tags))
+        return ' '.join(map(str, tags))
 
 
 # Create one shared instance

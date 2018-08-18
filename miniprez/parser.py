@@ -2,7 +2,7 @@ import itertools
 import bs4
 import copy
 
-from tagline import tagline
+from .tagline import tagline
 
 _section_header_token = '----'
 _comment_marker_token = '//'
@@ -91,7 +91,7 @@ class section(object):
         lines = iter(self)
 
         # Parse the header
-        z = lines.next().build(indent=-5)
+        z = next(lines).build(indent=-5)
         soup.append(z)
 
         for x in lines:
@@ -128,7 +128,7 @@ class section(object):
             z = tag
 
         # We need to resoup the pot
-        soup = bs4.BeautifulSoup(unicode(soup), 'html.parser')
+        soup = bs4.BeautifulSoup(str(soup), 'html.parser')
 
         # Remove all the indent tags
         for tag in soup.find_all(True, indent=True):

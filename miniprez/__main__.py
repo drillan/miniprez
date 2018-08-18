@@ -17,7 +17,7 @@ Usage:
 import os
 import time
 from docopt import docopt
-import miniprez
+from . import miniprez
 
 
 def main():

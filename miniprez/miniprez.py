@@ -2,9 +2,9 @@ import bs4
 import os
 import codecs
 
-from parser import file_iterator, section_iterator, section
-from build_env import build_environment
-from _version import __version__
+from .parser import file_iterator, section_iterator, section
+from .build_env import build_environment
+from ._version import __version__
 
 __location__ = os.path.realpath(os.path.join(
     os.getcwd(), os.path.dirname(__file__)))
@@ -42,7 +42,7 @@ def build(args):
 
     with codecs.open(args["OUTPUT"], 'w', 'utf-8') as FOUT:
         if args["--condense"]:
-            output = unicode(base)
+            output = str(base)
         else:
             output = base.prettify()
 

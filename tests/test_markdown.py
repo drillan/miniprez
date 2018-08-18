@@ -38,7 +38,7 @@ def test_link():
 
 def test_emoji():
     a = "This is :coffee:"
-    b = u'This is \u2615'
+    b = 'This is \u2615'
     assert_equal(P(a), b)
 
 
@@ -50,5 +50,5 @@ def test_fontawesome():
 
 def test_equation():
     a = "This, $\frac{x^2}{y}$ is math."
-    b = u'This, <div class="equation" data-expr="\x0crac{x^2}{y}"></div> is math.'
+    b = 'This, <div class="equation" data-expr="\x0crac{x^2}{y}"></div> is math.'
     assert_equal(P(a), b)

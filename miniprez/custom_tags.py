@@ -3,7 +3,7 @@ Custom tags. Make sure you register new custom tags at the bottom.
 '''
 
 import bs4
-from inline_markdown import inline_markdown_parser, soup
+from .inline_markdown import inline_markdown_parser, soup
 
 src_options = ["url", "href", "src", ""]
 
@@ -114,7 +114,6 @@ def img(tagline):
             pass
         opt = "width:{}".format(val)
         img['style'].append(opt)
-        
     return img
 
 
@@ -153,5 +152,5 @@ _registered_custom_tags = {
     "button": button,
     "codeblock": codeblock,
     "figure": figure,
-    "img": img, 
+    "img": img,
 }
